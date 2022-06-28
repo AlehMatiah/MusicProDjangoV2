@@ -24,13 +24,15 @@ class FormProducto(forms.ModelForm):
         """ widgets = {
             'titulo': forms.TextInput(),
             'descripcion' : forms.Textarea(),
+            'stock': forms.NumberInput(),
             'precio' : forms.NumberInput(),
             'imagen' : forms.FileField()
         } """
         """ widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Ingrese el nombre del producto...' , 'required': True}),
             'descripcion' : forms.Textarea(attrs={'class' : 'form-control', 'row' : 3, 'required': True}),
-            'precio' : forms.NumberInput(attrs={'class' : 'form-control', 'placeholder':'XXXX.XX', 'required': True}),
+            'stock': forms.NumberInput(attrs={'class': 'form-control', 'placeholder':'Ingrese el stock del producto...' , 'required': True}),
+            'precio' : forms.NumberInput(attrs={'class' : 'form-control', 'placeholder':'XXXX', 'required': True}),
             'imagen' : forms.FileField(attrs={'class':'form-control-file', 'id':'imagen', 'placeholder': 'Ingrese la imagen...', 'required': True})
         } """
 

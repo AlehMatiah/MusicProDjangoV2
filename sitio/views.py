@@ -79,6 +79,7 @@ def producto_edit(request, producto_id):
             producto.titulo = request.POST['titulo']
             producto.categoria = categoria_del_producto
             producto.descripcion = request.POST['descripcion']
+            producto.stock = request.POST['stock']
             producto.imagen = request.FILES['imagen']
             producto.precio = request.POST['precio']
             producto.save()

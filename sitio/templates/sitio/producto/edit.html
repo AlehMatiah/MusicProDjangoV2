@@ -64,6 +64,20 @@
                     <textarea class="form-control" name="descripcion" rows="3" required>{{producto.descripcion.capitalize}}</textarea>
                 </div>
 
+                <!-- STOCK -->
+                <div class="col-12 ">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-auto m-0 p-0">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Stock: </div>
+                                </div>
+                                <input type="number" class="form-control" name="stock" placeholder="Stock del producto..." value="{{ producto.stock|floatformat }}" required>
+                            </div>
+                        </div>
+                <br>
+                <br>
+                
                 <div class="col-12 ">
                     <div class="row justify-content-between align-items-center">
                         <!-- PRECIO -->
@@ -72,7 +86,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Precio: $</div>
                                 </div>
-                                <input type="number" class="form-control" name="precio" placeholder="XXXX.XX" value="{{ producto.precio|floatformat }}" required>
+                                <input type="number" class="form-control" name="precio" placeholder="XXXX" value="{{ producto.precio|floatformat }}" required>
                             </div>
                         </div>
 
