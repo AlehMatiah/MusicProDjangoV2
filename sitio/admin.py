@@ -4,8 +4,8 @@ from .models import *
 # Register your models here.
 
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ['titulo', 'precio', 'categoria']
-    #list_editable = ['precio']
+    list_display = ['titulo', 'precio', 'stock', 'marca', 'categoria']
+    list_editable = ['stock']
     search_fields = ['titulo', 'descripcion']
     list_filter = ['categoria']
 

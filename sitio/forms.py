@@ -20,19 +20,25 @@ class FormProducto(forms.ModelForm):
 
     class Meta:
         model = Producto
-        fields = ('titulo','imagen','descripcion','precio','categoria')
+        fields = ('titulo','imagen','descripcion', 'marca', 'color', 'stock', 'precio', 'codigo', 'categoria')
         """ widgets = {
             'titulo': forms.TextInput(),
             'descripcion' : forms.Textarea(),
+            'marca' : forms.TextInput(),
+            'color' : forms.TextInput(),
             'stock': forms.NumberInput(),
             'precio' : forms.NumberInput(),
+            'codigo' : forms.TextInput(),
             'imagen' : forms.FileField()
         } """
         """ widgets = {
             'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Ingrese el nombre del producto...' , 'required': True}),
             'descripcion' : forms.Textarea(attrs={'class' : 'form-control', 'row' : 3, 'required': True}),
+            'marca' : forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Ingrese la marca del producto...' , 'required': True}),
+            'color' : forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Ingrese el color del producto...' , 'required': True}),
             'stock': forms.NumberInput(attrs={'class': 'form-control', 'placeholder':'Ingrese el stock del producto...' , 'required': True}),
             'precio' : forms.NumberInput(attrs={'class' : 'form-control', 'placeholder':'XXXX', 'required': True}),
+            'codigo' : forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Ingrese el codigo del producto...' , 'required': True}),
             'imagen' : forms.FileField(attrs={'class':'form-control-file', 'id':'imagen', 'placeholder': 'Ingrese la imagen...', 'required': True})
         } """
 

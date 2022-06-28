@@ -22,7 +22,10 @@
                 <div class="detalle-producto-content__text">
                     <h1 class="display-4 text-capitalize">{{ producto.titulo }}</h1>
 
-                    <h2 class="display-4 text-capitalize mb-3">Categoria: {{ producto.categoria.descripcion }}</h2>
+                    <h2 class="display-4 text-capitalize mb-3"><strong>Categoria:</strong> {{ producto.categoria.descripcion }}</h2>
+                    <h2 class="display-4 text-capitalize mb-3"><strong>Marca:</strong> {{ producto.marca }}</h2>
+                    <h2 class="display-4 text-capitalize mb-3"><strong>Color:</strong> {{ producto.color }}</h2>
+                    <h2 class="display-4 text-capitalize mb-3"><strong>Stock:</strong> {{ producto.stock }}</h2>
 
                     <p>{{ producto.descripcion.capitalize }}</p>
                 </div>

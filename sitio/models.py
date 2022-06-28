@@ -14,7 +14,10 @@ class Producto(models.Model):
     # Imagen
     imagen = models.FileField(upload_to='imagenes/productos/')
     descripcion = models.CharField(max_length=200, null=False)
-    precio = models.DecimalField(null=False, max_digits=10, decimal_places=2)
+    marca = models.CharField(max_length=50, null=False, default='')
+    color = models.CharField(max_length=50, null=False, default='')
+    precio = models.IntegerField(null=False, default=0)
+    codigo = models.CharField(max_length=50, null=False, default='')
     stock = models.IntegerField(null=False, default=0)
     # FK
     categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE, related_name="productos")
