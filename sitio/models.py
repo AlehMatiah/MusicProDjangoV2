@@ -25,6 +25,23 @@ class Producto(models.Model):
     def __str__(self):
         return self.titulo
 
+class Order(models.Model):
+    ordernum = models.CharField(max_length=9, null=True, blank=True)
+    customer = models.CharField(max_length=200, null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=True)
+
+    def __str__(self) -> str:
+        return self.ordernum
+
+class Order_Detail(models.Model):
+    product = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cant = models.IntegerField(default=1)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.product.titulo
+
 class Carrito(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name="carrito")
     total = models.DecimalField(null=False, max_digits=10, decimal_places=2)

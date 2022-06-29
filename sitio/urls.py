@@ -7,8 +7,9 @@ urlpatterns = [
     path('registrarse/', views.register, name="register"),
 
 
-    # ACERCA DE
+    # Paginas
     path('acercaDe', views.acerca_de, name="acerca_de"),
+    path('simple_checkout', views.simple_checkout, name="simple_checkout"),
     
     # PRODUCTOS
     path('', views.producto_index, name="producto_index"),
@@ -24,5 +25,10 @@ urlpatterns = [
     path('carrito/agregar', views.carrito_save, name="carrito_save"),
     path('carrito/clean', views.carrito_clean, name="carrito_clean"),
     path('item_carrito/<int:item_carrito_id>/eliminar', views.item_carrito_delete, name="item_carrito_delete"),
+
+    #Simple checkout
+    #path('', views.simple_checkout, name="simple_checkout"),
+    path('complete/', views.paymentComplete, name="complete"),
+
 
 ]

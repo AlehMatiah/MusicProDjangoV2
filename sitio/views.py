@@ -1,3 +1,5 @@
+import json
+from random import random
 from django.contrib.auth.models import User
 from sitio.forms import FormProducto
 from django.shortcuts import render, redirect, get_object_or_404
@@ -102,6 +104,7 @@ def producto_delete(request, producto_id):
     #return HttpResponse(f'Eliminar producto_id: {producto.id}')
 
 def producto_search(request):
+    request.session["paypal"] = True
     texto_de_busqueda = request.GET["texto"]
     productosPorTitulo = Producto.objects.filter(titulo__icontains = texto_de_busqueda).all()
     productosPorDescripcion = Producto.objects.filter(descripcion__icontains = texto_de_busqueda).all()
@@ -133,6 +136,7 @@ def productos_por_categoria(request, categoria_id):
     CARRITO
 """
 def carrito_index(request):
+    request.session["paypal"] = False
     categorias = Categoria.objects.all()
     usuario_logeado = User.objects.get(username=request.user)
     productos = Carrito.objects.get(usuario=usuario_logeado.id).items.all()
@@ -209,4 +213,30 @@ def acerca_de(request):
         'categorias' : Categoria.objects.all(),
     })
 
+def simple_checkout(request):
+    return render(request, 'sitio/carrito/simple_checkout.html')
 
+def paymentComplete(request):
+    body = json.loads(request.body)
+    sess = request.session.get("data",{"items":[]})
+    productos_carro = sess["items"]
+    #datos cabecera
+    Oc = Order()
+    Oc.customer = body['customer']
+    Oc.ordernumber = random.randint(10000,99999)
+    Oc.save()
+    for item in productos_carro:
+        prod = Producto.objects.get(slug=item)
+        Od = Order_Detail()
+        Od.product = prod
+        Od.cant = 1
+        Od.order = Oc
+        Od.save()
+    del request.session["data"]
+    return redirect("sitio:sucess")
+
+def sucess(request):
+    productos = Producto.objects.filter(activo = True)
+    categorias = Categoria.objects.all(activo = True)
+    context = {"productos":productos, "categorias":categorias}
+    return render(request, 'sitio/carrito/sucess.html', context)
