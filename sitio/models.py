@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import Textarea
 
 # Create your models here.
 class Categoria(models.Model):
@@ -13,7 +14,7 @@ class Producto(models.Model):
     titulo = models.CharField(max_length=50, null=False)
     # Imagen
     imagen = models.FileField(upload_to='imagenes/productos/')
-    descripcion = models.CharField(max_length=200, null=False)
+    descripcion = models.TextField(null=False, blank=False)
     marca = models.CharField(max_length=50, null=False, default='')
     color = models.CharField(max_length=50, null=False, default='')
     precio = models.IntegerField(null=False, default=0)
