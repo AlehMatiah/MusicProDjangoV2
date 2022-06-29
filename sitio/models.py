@@ -11,7 +11,7 @@ class Categoria(models.Model):
 
 
 class Producto(models.Model):
-    titulo = models.CharField(max_length=50, null=False)
+    titulo = models.CharField(max_length=100, null=False)
     # Imagen
     imagen = models.FileField(upload_to='imagenes/productos/')
     descripcion = models.TextField(null=False, blank=False)
