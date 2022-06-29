@@ -5,20 +5,20 @@
 
     <!-- MENSAGE DE ERROR -->
     {% if error_message %}
-        <div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
-            <strong>{{ error_message }}</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+    <div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+        <strong>{{ error_message }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     {% endif %}
     {% if okey_message %}
-        <div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
-            <strong>{{ okey_message }}</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+    <div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+        <strong>{{ okey_message }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     {% endif %}
 
     <!-- TITULO -->
@@ -33,7 +33,8 @@
 
         <!-- NOMBRE PRODUCTO -->
         <div class="col-12 p-0 form-group">
-            <input class="form-control" type="text" name="titulo" placeholder="Ingrese el nombre del producto..." value="{{producto.titulo.title}}" required>
+            <input class="form-control" type="text" name="titulo" placeholder="Ingrese el nombre del producto..."
+                value="{{producto.titulo.title}}" required>
         </div>
 
         <div class="row container mx-auto p-0 pt-3">
@@ -46,61 +47,94 @@
                         placeholder="Ingrese la imagen..." required>
                 </div>
             </div>
+            <br>
+            <!-- MARCA -->
+            <div class="col-md-6 p-0 m-0">
+                <div class="form-group">
+                    <label for="marca">MARCA</label>
+                    <input class="form-control" type="text" name="marca" id="marca" placeholder="Ingrese la marca..."
+                        value="{{producto.marca}}" required>
+                </div>
+            </div>
 
-            <div class="col-md-6 p-0 m-0 row">
+            <!-- COLOR -->
+            <div class="col-md-6 p-0 m-0">
+                <div class="form-group">
+                    <label for="color">COLOR</label>
+                    <input class="form-control" type="text" name="color" id="color" placeholder="Ingrese el color..."
+                        value="{{producto.color}}" required>
+                </div>
+            </div>
 
-                <!-- CATEGORIA -->
-                <div class="col-12 p-0 form-group">
-                    <select class="custom-select" name="categoria" required>
-                        <option value="" selected>-- Seleccione la categoria --</option>
-                        {% for categoria in categorias %}
+            <!-- CODIGO -->
+            <div class="col-md-6 p-0 m-0">
+                <div class="form-group">
+                    <label for="codigo">CODIGO</label>
+                    <input class="form-control" type="text" name="codigo" id="codigo" placeholder="Ingrese el codigo..."
+                        value="{{producto.codigo}}" required>
+                </div>
+
+
+                <div class="col-md-6 p-0 m-0 row">
+
+                    <!-- CATEGORIA -->
+                    <div class="col-12 p-0 form-group">
+                        <select class="custom-select" name="categoria" required>
+                            <option value="" selected>-- Seleccione la categoria --</option>
+                            {% for categoria in categorias %}
                             <option value="{{ categoria.id }}">{{ categoria.descripcion }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+                            {% endfor %}
+                        </select>
+                    </div>
 
-                <!-- DESCRIPCION -->
-                <div class="col-12 p-0 form-group mb-3">
-                    <textarea class="form-control" name="descripcion" rows="3" required>{{producto.descripcion.capitalize}}</textarea>
-                </div>
+                    <!-- DESCRIPCION -->
+                    <div class="col-12 p-0 form-group mb-3">
+                        <textarea class="form-control" name="descripcion" rows="3"
+                            required>{{producto.descripcion.capitalize}}</textarea>
+                    </div>
 
-                <!--  -->
+                    <!--  -->
 
-                <!-- STOCK -->
-                <div class="col-12 ">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto m-0 p-0">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">Stock: </div>
+                    <!-- STOCK -->
+                    <div class="col-12 ">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-auto m-0 p-0">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Stock: </div>
+                                    </div>
+                                    <input type="number" class="form-control" name="stock"
+                                        placeholder="Stock del producto..." value="{{ producto.stock|floatformat }}"
+                                        required>
                                 </div>
-                                <input type="number" class="form-control" name="stock" placeholder="Stock del producto..." value="{{ producto.stock|floatformat }}" required>
                             </div>
-                        </div>
-                <br>
-                <br>
-                
-                <div class="col-12 ">
-                    <div class="row justify-content-between align-items-center">
-                        <!-- PRECIO -->
-                        <div class="col-auto m-0 p-0">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">Precio: $</div>
-                                </div>
-                                <input type="number" class="form-control" name="precio" placeholder="XXXX" value="{{ producto.precio|floatformat }}" required>
-                            </div>
-                        </div>
+                            <br>
+                            <br>
 
-                        <!-- BOTON -->
-                        <div class="form-group col-md-4 col-lg-3 m-0 p-0 mt-2 mt-lg-0">
-                            <button type="submit" class="btn btn-success btn-block">Editar</button>
+                            <div class="col-12 ">
+                                <div class="row justify-content-between align-items-center">
+                                    <!-- PRECIO -->
+                                    <div class="col-auto m-0 p-0">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Precio: $</div>
+                                            </div>
+                                            <input type="number" class="form-control" name="precio" placeholder="XXXX"
+                                                value="{{ producto.precio|floatformat }}" required>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+
+                                    <!-- BOTON -->
+                                    <div class="form-group col-md-4 col-lg-3 m-0 p-0 mt-2 mt-lg-0">
+                                        <button type="submit" class="btn btn-success btn-block">Editar</button>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                </div>
-
-            </div>
-        </div>
     </form>
 
 </section>
