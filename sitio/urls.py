@@ -1,5 +1,12 @@
-from django.urls import path
+from django.db import router
+from django.urls import path, include
 from . import views
+from rest_framework import routers
+
+#Serializers
+router = routers.DefaultRouter()
+router.register(r'productos', views.ProductoViewSet)
+router.register(r'categorias', views.CategoriaViewSet)
 
 app_name = "SITIO"
 urlpatterns = [
@@ -30,5 +37,6 @@ urlpatterns = [
     #path('', views.simple_checkout, name="simple_checkout"),
     path('complete/', views.paymentComplete, name="complete"),
 
-
+    #Serializer
+    path('api/', include(router.urls)),
 ]

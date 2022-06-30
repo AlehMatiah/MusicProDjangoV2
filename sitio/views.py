@@ -5,10 +5,22 @@ from sitio.forms import FormProducto
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http.response import HttpResponse
-
 from sitio.models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from rest_framework import viewsets
+from .serializers import ProductoSerializer, CategoriaSerializer
+
+#SERIALIZERS
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+
+class CategoriaViewSet(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+
+
 """ 
     REGISTRO DE USUARIO
 """
